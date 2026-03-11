@@ -43,8 +43,7 @@ Once installed, open a new Claude chat and type:
 Run the Ambient CRM skill
 
 
-Claude will:
-Discover your connected mailbox automatically, On first run Claude will process last 1000 mails for 90 days (Junk and Trash excluded). On subsequent runs Claude will process only new emails since the last checkpoint.
+Claude will discover your connected mailbox automatically. On first run Claude will process last 1000 mails for 90 days (Junk and Trash excluded). On subsequent runs Claude will process only new emails since the last checkpoint.
 
 
 Querying: after the first run, you can query your data in natural language:
