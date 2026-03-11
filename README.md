@@ -42,11 +42,10 @@ Activating the Skill in Claude Desktop
 Once installed, open a new Claude chat and type:
 Run the Ambient CRM skill
 
+
 Claude will:
-Discover your connected mailbox automatically
-On first run: process last 1000 mails for 90 days (Junk and Trash excluded)
-On subsequent runs: process only new emails since the last checkpoint
-Print a summary of open action items and deal events in the chat
+Discover your connected mailbox automatically, On first run Claude will process last 1000 mails for 90 days (Junk and Trash excluded). On subsequent runs Claude will process only new emails since the last checkpoint.
+
 
 Querying: after the first run, you can query your data in natural language:
 - "Show me all open action items for XXX"
@@ -54,6 +53,7 @@ Querying: after the first run, you can query your data in natural language:
 - "Who hasn't replied to us in over 14 days"
 - "Mark the NDA review as done: signed and returned Feb 28"
 - "Set XXX to Tier A"
+
 
 
 Upcoming plug-in finctionality:
