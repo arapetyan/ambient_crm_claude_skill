@@ -48,38 +48,20 @@ On first run: process last 1000 mails for 90 days (Junk and Trash excluded)
 On subsequent runs: process only new emails since the last checkpoint
 Print a summary of open action items and deal events in the chat
 
-You do not need to specify folders, date ranges, or any parameters. The skill handles all of that.
-You can ask Claude directly for any insights you want to get
+Querying: after the first run, you can query your data in natural language:
+- "Show me all open action items for XXX"
+- "What happened with the XXX deal this week"
+- "Who hasn't replied to us in over 14 days"
+- "Mark the NDA review as done: signed and returned Feb 28"
+- "Set XXX to Tier A"
 
-Output Files
-The skill writes three files to your working directory on every run:
-FileContentsaicrm_chunk_graph.jsonStructural graph: threads, email chunks, persons, companies, edgesaicrm_action_items_graph.jsonSemantic graph: action items, events, blockers, deal signalsaicrm_checkpoint.jsonRun state: last processed timestamp and message IDs
-A .bak of the action items graph is kept for one rollback level.
 
-Querying Your CRM
-After the first run, you can query your data in natural language:
-Show me all open action items for Acme Corp
-What happened with the Freightos deal this week
-Who hasn't replied to us in over 14 days
-Mark the NDA review as done: signed and returned Feb 28
-Set Acme Corp to Tier A
-Manual entries are tagged with provenance so the pipeline never overwrites them.
-
-Architecture
-The skill runs a two-phase pipeline:
-Phase 1 — Chunk Graph
-Each email becomes a chunk node. Threads are reconstructed via Message-ID headers. Quoted reply text is stripped and stored separately to prevent duplicate extraction.
-Phase 2 — Action Item Graph
-Chunks are traversed oldest-to-newest per thread. The LLM extracts persons, companies, events, and action items with stable IDs so incremental runs update existing items rather than creating duplicates.
-Checkpoint System
-Message-ID based deduplication ensures each email is processed exactly once, regardless of connector timestamp reliability.
-
-Roadmap for the plug-in (near-term)
-PII tokenization for legal compliance
-DB for mailboxes exceeding ~500 threads
-Confidence decay on stale open items
-Multi-mailbox: merge team members into a shared graph
-Behavioral baseline engine: detect when account engagement deviates from normal
-Gap detection: surface what should have happened but didn't
-Data export for fine-tuning domain-specific models
-NanoClaw orchestration for scheduled autonomous runs
+Upcoming plug-in finctionality:
+- PII tokenization for legal compliance
+- DB for mailboxes exceeding ~500 threads
+- Confidence decay on stale open items
+- Multi-mailbox: merge team members into a shared graph
+- Behavioral baseline engine: detect when account engagement deviates from normal
+- Gap detection: surface what should have happened but didn't
+- Data export for fine-tuning domain-specific models
+- Light claw orchestration for scheduled autonomous runs
